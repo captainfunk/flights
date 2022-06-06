@@ -1,6 +1,7 @@
 import csv
 from datetime import datetime
 
+# read flights data from original file 
 file = open('flights.csv', 'r+', encoding="utf-8")
 csvreader = csv.reader(file)
 
@@ -9,8 +10,8 @@ header = next(csvreader)
 
 rows = []
 nSuccess = 0
-for row in csvreader:
 
+for row in csvreader:
         arrivalTime = datetime.strptime(row[1].strip(), '%H:%M')
         departureTime = datetime.strptime(row[2].strip(), '%H:%M')
 
@@ -22,6 +23,7 @@ for row in csvreader:
                 row[3] = 'fail'
         rows.append(row)
 
+# close file
 file.close()
 
 # save result in another csv file
